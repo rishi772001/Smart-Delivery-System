@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:33
--- Generation Time: Feb 25, 2020 at 10:25 AM
+-- Generation Time: Jul 03, 2020 at 09:45 AM
 -- Server version: 10.3.16-MariaDB
 -- PHP Version: 7.3.7
 
@@ -52,26 +52,6 @@ CREATE TABLE `letter` (
   `status` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `letter`
---
-
-INSERT INTO `letter` (`id`, `addr`, `status`) VALUES
-(1, 'Sardar Patel Road, Chennai, Tamil Nadu 600025', 'pending'),
-(4, 'RR Tower 2, First FloorGuindy Industrial Estate, Guindy, Chennai, Tamil Nadu 600032', 'pending'),
-(18, '7, prasanth colony 1st street,tambaram,chennai', 'pending'),
-(20, '947, Thiruvottiyur High Rd, Chinna Mettupalaiyam, Kaladipet, tiruvotiyur, Chennai, Tamil Nadu 600019', 'pending'),
-(21, 'no.41/28, vasantha nagar 1st street, thangal, tiruvotiyur, chennai 600019', 'pending'),
-(23, 'Sardar Patel Rd, opp. Lemon tree, Guindy National Park, Guindy, Chennai, Tamil Nadu 600022', 'pending'),
-(24, 'Race Course Rd, near Railway Station, Guindy, Chennai, Tamil Nadu 600032', 'pending'),
-(25, '6/24, State Bank Colony, Adambakkam, Chennai, Tamil Nadu 600088', 'pending'),
-(26, '23/1, Vandikaran St, Maduvinkarai, Guindy, Chennai, Tamil Nadu 600032', 'pending'),
-(27, 'SIDCO Industrial Estate, Guindy, Chennai, Tamil Nadu 600032', 'pending'),
-(40, 'K KAMARAJ\n\n41/28 VASANTHANAGAR 1ST STREET\nTHANGAL TIRUVOTIYUR\n\nCHENNAI\n\nTAMIL NADU\n\nINDIA - 600019\n', 'pending'),
-(49, 'no.41/28, vasantha nagar 1st street, thangal, tiruvotiyur, chennai 600019', 'pending'),
-(54, '762 (old no 538) TH Road, Washermanpet,\nChennai, Tamilnadu-600021\n', 'pending'),
-(55, '762 (old no 538) TH Road, Washermanpet,\nChennai, Tamilnadu-600021\n', 'pending');
-
 -- --------------------------------------------------------
 
 --
@@ -96,7 +76,8 @@ INSERT INTO `postman` (`ID`, `Name`, `SERVICE`, `email`, `password`) VALUES
 (4, 'vijay', 'tambaram', 'vijay@gmail.com', 'vijay'),
 (5, 'susaa', 'mylapore', 'susaa@gmail.com', 'susaa'),
 (6, 'kumar', 'west mambalam', 'kumar', 'kumar'),
-(7, 'watson', 'washermanpet', 'watson@gmail.com', 'watson');
+(7, 'watson', 'washermanpet', 'watson@gmail.com', 'watson'),
+(8, 'sriram', 'thandalam', 'abc', 'sriram');
 
 -- --------------------------------------------------------
 
@@ -105,31 +86,10 @@ INSERT INTO `postman` (`ID`, `Name`, `SERVICE`, `email`, `password`) VALUES
 --
 
 CREATE TABLE `postt` (
+  `num` int(11) NOT NULL,
   `ID` int(11) NOT NULL,
   `SERVICE` varchar(500) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `postt`
---
-
-INSERT INTO `postt` (`ID`, `SERVICE`) VALUES
-(1, 'RR Tower 2, First FloorGuindy Industrial Estate, Guindy, Chennai, Tamil Nadu 600032'),
-(4, '7, prasanth colony 1st street,tambaram,chennai'),
-(1, 'Sardar Patel Rd, opp. Lemon tree, Guindy National Park, Guindy, Chennai, Tamil Nadu 600022'),
-(1, 'Race Course Rd, near Railway Station, Guindy, Chennai, Tamil Nadu 600032'),
-(1, '23/1, Vandikaran St, Maduvinkarai, Guindy, Chennai, Tamil Nadu 600032'),
-(1, 'SIDCO Industrial Estate, Guindy, Chennai, Tamil Nadu 600032'),
-(2, 'no:41/28, vasantha nagar 1st street, thangal, tiruvotiyur, chennai 19'),
-(2, 'no.41/28, vasantha nagar 1st street, thangal, tiruvotiyur, chennai 600019'),
-(2, 'no.41/28, vasantha nagar 1st street, thangal, tiruvotiyur, chennai 600019'),
-(2, 'no.41/28, vasantha nagar 1st street, thangal, tiruvotiyur, chennai 600019'),
-(2, 'no.41/28, vasantha nagar 1st street, thangal, tiruvotiyur, chennai 600019'),
-(2, 'no.41/28, vasantha nagar 1st street, thangal, tiruvotiyur, chennai 600019'),
-(2, 'no.41/28, vasantha nagar 1st street, thangal, tiruvotiyur, chennai 600019'),
-(2, 'no.41/28, vasantha nagar 1st street, thangal, tiruvotiyur, chennai 600019'),
-(7, '762 (old no 538) TH Road, Washermanpet,\nChennai, Tamilnadu-600021\n'),
-(7, '762 (old no 538) TH Road, Washermanpet,\nChennai, Tamilnadu-600021\n');
 
 --
 -- Indexes for dumped tables
@@ -148,6 +108,12 @@ ALTER TABLE `postman`
   ADD PRIMARY KEY (`ID`);
 
 --
+-- Indexes for table `postt`
+--
+ALTER TABLE `postt`
+  ADD PRIMARY KEY (`num`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -155,13 +121,19 @@ ALTER TABLE `postman`
 -- AUTO_INCREMENT for table `letter`
 --
 ALTER TABLE `letter`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `postman`
 --
 ALTER TABLE `postman`
-  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `postt`
+--
+ALTER TABLE `postt`
+  MODIFY `num` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
