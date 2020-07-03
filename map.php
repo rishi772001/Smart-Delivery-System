@@ -18,6 +18,7 @@
 <html>
   <head>
     <title>Location</title>
+    <meta content="width=device-width, initial-scale=1" name="viewport" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <style>
       #map {
@@ -62,7 +63,7 @@
 </br>
     <!-- logged in user information -->
     <?php  if (isset($_SESSION['username'])) : ?>
-      <button style="float:right;margin-right: 10" class="btn btn-outline-danger"> <a href="index.php?logout='1'" style="color: black;text-decoration: none;">logout</a> </button>
+      <button style="float:right;margin-right: 10" class="btn btn-outline-danger"> <a href="index.html?logout='1'" style="color: black;text-decoration: none;">logout</a> </button>
       <p>Welcome <strong><?php echo $_SESSION['username']; echo "</br> Your Id:".$_SESSION['idd']; ?></strong></p>
     <?php endif ?>
   </div>
@@ -83,8 +84,8 @@
           center: chennai,
           mapTypeId: 'terrain'
         });
-		
-		
+    
+    
         // Adds a marker at the center of the map.
 
 
@@ -157,8 +158,8 @@
       function setMapOnAll(map) {
         for (var i = 0; i < markers.length; i++) {
           markers[i].setMap(map);
-		  
-		  
+      
+      
         }
       }
 

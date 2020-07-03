@@ -139,11 +139,11 @@ background-size: 100% 100%;
 <script>
 var span = document.getElementsByClassName("close")[0];
 span.onclick = function() {
-  window.location='index.php';
+  window.location='index.html';
 }
 
 window.onclick = function(event) {
-    window.location='index.php';
+    window.location='index.html';
 }
 
 </script>
