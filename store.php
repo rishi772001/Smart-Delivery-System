@@ -3,9 +3,9 @@
 
 <?php
 
-$rawaddress  =  $_POST['abc'];
+$rawaddress  =  $_POST['addr'];
 
-
+require "conn.php";
 $address = $rawaddress;
 $rawaddress = str_replace(' ', '', $rawaddress);
 $rawaddress = strtolower($rawaddress);
@@ -18,7 +18,7 @@ if ($result->num_rows > 0) {
     while ($row  =  $result->fetch_assoc()) {
         for ($x  =  0; $x < 100; $x++) {
             $index = strpos($splitaddress[$x], $row['SERVICE']);
-            if ($index > -1) {
+            if ($index === false) {
                 $temp = $row['ID'];
                 $sqlpost  =  'INSERT into postt (ID,SERVICE) values("'.$row['ID'].'","'.$address.'")';
             }
@@ -29,7 +29,7 @@ if ($result->num_rows > 0) {
         $result1 = $conn->query($sqlpostman);
         if ($result1) {
             $data  =  $result1->fetch_assoc();
-            echo"<script type = 'text/javascript'>window.alert('Successfully Completed, Postman Name is ".$data['Name']."');window.location = 'webcam.php';</script>";
+            echo"<script type = 'text/javascript'>window.alert('Successfully Completed, Postman Name is ".$data['Name']."');window.location = 'adminhomepage.php';</script>";
         }
     }
     //echo "success";

@@ -1,4 +1,5 @@
 <?php
+// to check api key is working
 function geo($lat, $long)
 {
     

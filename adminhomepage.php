@@ -168,7 +168,7 @@ if (isset($_GET['logout'])) {
                 <!-- Form for enter address -->
                 <h2>Enter Address</h2>
 
-                <form method="POST" action="storeraw.php">
+                <form method="POST" action="store.php">
                     <div class="row">
                         <div class="col-md-12">
                             <input type="text" name="addr" id="addr" placeholder="Enter address">
