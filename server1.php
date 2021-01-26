@@ -25,7 +25,7 @@
 
             if (mysqli_num_rows($results) == 1) {
                 $_SESSION['username'] = $username;
-                $_SESSION['success'] = "You are now logged in";
+                $_SESSION['success'] = "";
                 header('location: adminhomepage.php');
             } else {
                 array_push($errors, "Wrong username/password combination");

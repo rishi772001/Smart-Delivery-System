@@ -22,9 +22,9 @@ if (isset($_GET['logout'])) {
     <link rel="stylesheet" href="css/style.css" />
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script>
-    $(document).ready(function() {
-        $("#nav-placeholder").load("nav.html");
-    });
+        $(document).ready(function() {
+            $("#nav-placeholder").load("nav.html");
+        });
     </script>
 
 
@@ -35,51 +35,51 @@ if (isset($_GET['logout'])) {
     <link rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
     <style type="text/css">
-    #results {
-        padding: 20px;
-        border: 1px solid;
-        background: #ccc;
-    }
+        #results {
+            padding: 20px;
+            border: 1px solid;
+            background: #ccc;
+        }
 
-    table,
-    th,
-    tr,
-    td {
-        background: radial-gradient(circle, rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%);
-        border: 1.5px solid blue;
-        text-align: center;
-        padding: 2px;
-        margin: 20px;
-    }
+        table,
+        th,
+        tr,
+        td {
+            background: radial-gradient(circle, rgba(238, 174, 202, 1) 0%, rgba(148, 187, 233, 1) 100%);
+            border: 1.5px solid blue;
+            text-align: center;
+            padding: 2px;
+            margin: 20px;
+        }
 
-    #addr {
-        border: none;
-        border-bottom: 2px solid blue;
-        background-color: skyblue
-    }
+        #addr {
+            border: none;
+            border-bottom: 2px solid blue;
+            background-color: skyblue
+        }
 
-    .container {
-        margin-top: 30px;
-    }
+        .container {
+            margin-top: 30px;
+        }
 
-    #abc {
-        margin: 40px;
-    }
+        #abc {
+            margin: 40px;
+        }
 
-    .content a {
-        color: black;
-        text-decoration: none;
-    }
+        .content a {
+            color: black;
+            text-decoration: none;
+        }
     </style>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
     <script>
-    $(document).ready(function() {
-        $("#nav-placeholder").load("nav.html");
-    });
+        $(document).ready(function() {
+            $("#nav-placeholder").load("nav.html");
+        });
     </script>
 </head>
 
-<body style="background-color: skyblue;">
+<body>
     <div id="nav-placeholder"></div>
     <div class="container">
         <div class="content">
@@ -134,15 +134,15 @@ if (isset($_GET['logout'])) {
     </div> -->
 
     <div class="container text-center">
-        <div class="row">
-            <div class="col-md-6">
+        <div>
+            <div>
                 <!-- Form for upload image from gallery -->
                 <div class="row text-center">
-                    <h2>Choose from gallery</h2>
+                    <h6>Choose from gallery</h6>
 
                     <form method="POST" enctype="multipart/form-data">
-                        <div class="row">
-                            <div class="col-md-12">
+                        <div>
+                            <div>
                                 <input type="file" name="addr">
                             </div>
 
