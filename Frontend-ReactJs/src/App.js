@@ -1,11 +1,11 @@
 import './App.css';
-import Welcome from './Components/Welcome';
+import Template from './Components/Template';
 
 function App() {
   var type = "Admin";
   return (
     <>
-      <Welcome user = {type}/>
+      <Template user = {type}/>
     </>
   );
 }
