@@ -1,4 +1,3 @@
 <?php
-$conn = mysqli_connect('localhost:33', 'root', '', 'post');
-
+$conn = mysqli_connect('localhost', 'root', '', 'post');
 ?>
