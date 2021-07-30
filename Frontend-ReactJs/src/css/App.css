@@ -1,0 +1,32 @@
+.navbar-a{
+    color: white;
+    text-decoration: none;
+}
+.navbar-a:hover{
+    background-color: darkblue;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+}
+/* IMAGE */
+.demo-image-preview {
+  position: relative;
+  text-align: center;
+}
+
+.demo-image-preview > img {
+  width: 768px;
+}
+
+@media(max-width:768px){
+  .demo-image-preview > img {
+    width: 100%;
+  }
+}
+
+/* fullscreen enable by props */
+.demo-image-preview-fullscreen > img {
+  width: 100vw;
+  height:100vh;
+}
+/* IMAGE END */
