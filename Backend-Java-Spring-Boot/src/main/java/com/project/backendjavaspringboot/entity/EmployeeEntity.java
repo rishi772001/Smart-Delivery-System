@@ -51,5 +51,7 @@ public class EmployeeEntity {
         this.area = area;
     }
 
-
+    public void display(){
+        System.out.println(this.empId + " " + this.name + " " + this.area + " " + this.password);
+    }
 }
