@@ -1,15 +1,15 @@
 package com.project.backendjavaspringboot.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import org.springframework.web.bind.annotation.CrossOrigin;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name = "admin")
 public class AdminEntity {
     @Id
     @Column(name = "admin_id")
+    @GeneratedValue
     private int adminId;
 
     private String name;

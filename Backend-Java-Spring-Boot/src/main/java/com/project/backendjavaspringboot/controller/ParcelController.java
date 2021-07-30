@@ -13,6 +13,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/parcels")
+@CrossOrigin(origins = "*")
 public class ParcelController {
     @Autowired
     private ParcelService parcelService;
@@ -23,8 +24,11 @@ public class ParcelController {
     }
 
     @PostMapping
-    public EmployeeEntity addParcel(@RequestBody ParcelEntity parcel){
-        return parcelService.addParcel(parcel);
+    public ResponseEntity<EmployeeEntity> addParcel(@RequestBody ParcelEntity parcel){
+        EmployeeEntity emp = parcelService.addParcel(parcel);
+        if(emp == null)
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(emp, HttpStatus.CREATED);
     }
 
     @GetMapping("/{id}")
@@ -35,5 +39,10 @@ public class ParcelController {
     @GetMapping("/employee/{id}")
     public ResponseEntity<List<ParcelEntity>> getParcelByEmployee(@PathVariable("id") int id){
         return new ResponseEntity<>(parcelService.getParcelsByEmployee(id), HttpStatus.ACCEPTED);
+    }
+
+    @GetMapping("/path/{id}")
+    public ResponseEntity<List<ParcelEntity>> getPath(@PathVariable("id") int id){
+        return new ResponseEntity<>(parcelService.getPath(id), HttpStatus.ACCEPTED);
     }
 }

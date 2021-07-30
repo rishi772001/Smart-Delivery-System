@@ -19,8 +19,8 @@ public class AdminService {
         return (List<AdminEntity>) adminRepository.findAll();
     }
 
-    public void addAdmin(AdminEntity admin){
-        adminRepository.save(admin);
+    public AdminEntity addAdmin(AdminEntity admin){
+        return adminRepository.save(admin);
     }
 
     public Optional<AdminEntity> getAdmin(int id){

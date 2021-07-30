@@ -10,6 +10,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/admins")
+@CrossOrigin(origins = "*")
 public class AdminController {
     @Autowired
     private AdminService adminService;
@@ -20,8 +21,8 @@ public class AdminController {
     }
 
     @PostMapping
-    public void addAdmin(@RequestBody AdminEntity admin){
-        adminService.addAdmin(admin);
+    public AdminEntity addAdmin(@RequestBody AdminEntity admin){
+        return adminService.addAdmin(admin);
     }
 
     @GetMapping("/{id}")

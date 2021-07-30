@@ -1,19 +1,20 @@
-import {React,useState} from "react";
+import { React, useState } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
 import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
-import Box from "@material-ui/core/Box";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import ButtonAppBar from "../Components/NavBar";
-import AdminService from "../services/AdminService"
+import AdminService from "../services/AdminService";
+import { RadioGroup, Radio } from "@material-ui/core";
+import EmployeeService from "../services/EmployeeService";
+import { Redirect } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -42,19 +43,48 @@ export default function SignIn() {
 
   var handleChange = (e) => {
     setState({ ...state, [e.target.name]: e.target.value });
-  }
-   
-  var handleSubmit=(e)=>{
-      e.preventDefault();
-      AdminService.getAdmin(state).then((response) => {
+  };
+
+  var handleSubmit = (e) => {
+    e.preventDefault();
+    console.log(state);
+    if (state.user == "admin") {
+      AdminService.getAdmin(state.id).then((response) => {
         var data = response.data;
-        if(data !== null){
-          console.log("Login Success");
-          localStorage.setItem("user", state);
+        if (data !== null && data.password == state.password) {
+          // set session
+          localStorage.setItem("user", data.name);
+          localStorage.setItem("userType", "admin");
+          // redirect
           window.location.replace("/admin");
+        } else if (data != null) {
+          alert("Invalid Password");
+        } else {
+          alert("Invalid Id");
         }
-      })
-  }
+      });
+    } else if(state.user == "employee") {
+      EmployeeService.getEmployee(state.id).then((response) => {
+        var data = response.data;
+        if (data !== null && data.password == state.password) {
+          // set session
+          localStorage.setItem("user", data.name);
+          localStorage.setItem("userType", "employee");
+          // redirect
+          window.location.replace("/employee");
+        } else if (data != null) {
+          alert("Invalid Password");
+        } else {
+          alert("Invalid Id");
+        }
+      });
+    }
+  };
+
+  if(localStorage.getItem("userType") == "admin")
+    return <Redirect to="/admin" />
+  if(localStorage.getItem("userType") == "employee")
+    return <Redirect to="/employee" />  
   return (
     <>
       <ButtonAppBar />
@@ -73,10 +103,10 @@ export default function SignIn() {
               margin="normal"
               required
               fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
+              id="id"
+              label="id"
+              name="id"
+              autoComplete="id"
               autoFocus
               onChange={handleChange}
             />
@@ -92,17 +122,25 @@ export default function SignIn() {
               autoComplete="current-password"
               onChange={handleChange}
             />
-            <TextField
-              variant="outlined"
-              margin="normal"
-              type="radio"
-              required
-              fullWidth
+            <RadioGroup
+              row
+              aria-label="user"
               name="user"
-              label="User"
-              id="user"
               onChange={handleChange}
-            />
+            >
+              <FormControlLabel
+                value="employee"
+                control={<Radio color="primary" />}
+                label="Employee"
+                labelPlacement="end"
+              />
+
+              <FormControlLabel
+                value="admin"
+                control={<Radio color="primary" />}
+                label="Admin"
+              />
+            </RadioGroup>
 
             <Button
               type="submit"

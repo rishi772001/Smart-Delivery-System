@@ -8,4 +8,5 @@ import java.util.List;
 
 public interface ParcelRepository extends CrudRepository<ParcelEntity, Integer> {
     List<ParcelEntity> findParcelEntitiesByEmployee(EmployeeEntity employeeEntity);
+    List<ParcelEntity> findParcelEntitiesByEmployeeAndStatusEquals(EmployeeEntity employeeEntity, String status);
 }

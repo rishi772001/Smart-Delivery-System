@@ -10,6 +10,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping("/employees")
+@CrossOrigin(origins = "*")
 public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
@@ -20,14 +21,17 @@ public class EmployeeController {
     }
 
     @PostMapping
-    public void addEmployee(@RequestBody EmployeeEntity employee){
-        employeeService.addEmployee(employee);
+    public EmployeeEntity addEmployee(@RequestBody EmployeeEntity employee){
+        return employeeService.addEmployee(employee);
     }
 
     @GetMapping("/{id}")
     public Optional<EmployeeEntity> getEmployee(@PathVariable("id") int id){
         return employeeService.getEmployee(id);
     }
+
+    @DeleteMapping("/{id}")
+    public void deleteEmployee(@PathVariable("id") int id){ employeeService.deleteEmployee(id); }
 
 }
 

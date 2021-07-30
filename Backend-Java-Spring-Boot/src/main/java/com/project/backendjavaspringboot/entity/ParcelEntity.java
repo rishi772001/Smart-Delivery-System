@@ -7,6 +7,7 @@ import javax.persistence.*;
 public class ParcelEntity {
     @Id
     @Column(name="parcel_id")
+    @GeneratedValue
     private  int parcelId;
 
     @Column(name="from_address")

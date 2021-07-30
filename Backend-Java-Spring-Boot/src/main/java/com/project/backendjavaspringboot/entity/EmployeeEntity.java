@@ -1,16 +1,13 @@
 package com.project.backendjavaspringboot.entity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "employee")
 public class EmployeeEntity {
     @Id
     @Column(name = "emp_id")
-
+    @GeneratedValue
     private int empId;
 
     private String name;
@@ -29,10 +26,6 @@ public class EmployeeEntity {
 
     public int getEmpId() {
         return empId;
-    }
-
-    public void setEmpId(int empId) {
-        this.empId = empId;
     }
 
     public String getName() {

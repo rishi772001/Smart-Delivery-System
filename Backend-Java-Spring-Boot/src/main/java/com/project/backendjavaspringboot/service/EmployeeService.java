@@ -17,12 +17,16 @@ public class EmployeeService {
         return (List<EmployeeEntity>) employeeRepository.findAll();
     }
 
-    public void addEmployee(EmployeeEntity employee){
-       employeeRepository.save(employee);
+    public EmployeeEntity addEmployee(EmployeeEntity employee){
+       return employeeRepository.save(employee);
     }
 
     public Optional<EmployeeEntity> getEmployee(int id){
         Optional<EmployeeEntity> emp = employeeRepository.findById(id);
         return  emp;
+    }
+
+    public void deleteEmployee(int id){
+        employeeRepository.deleteById(id);
     }
 }

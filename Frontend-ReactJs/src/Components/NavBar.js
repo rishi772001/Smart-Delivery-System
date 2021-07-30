@@ -21,7 +21,14 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ButtonAppBar() {
   const classes = useStyles();
+  var user = localStorage.getItem("user");
+  var userType = localStorage.getItem("userType");
 
+  var logout = () => {
+    if (window.confirm("Are you sure to log out?")) {
+      localStorage.clear();
+    }
+  };
   return (
     <div className={classes.root}>
       <AppBar position="static">
@@ -29,12 +36,38 @@ export default function ButtonAppBar() {
           <Typography variant="h6" className={classes.title}>
             Smart Delivery System
           </Typography>
-          <a href="/" className="navbar-a">
-            <Button color="inherit">Sign In</Button>
-          </a>
+          {userType === "admin" && (
+            <a href="/admin" className="navbar-a">
+              <Button color="inherit">Home</Button>
+            </a>
+          )}
+          {userType === "admin" && (
+            <a href="/admin/employee/" className="navbar-a">
+              <Button color="inherit">Employees</Button>
+            </a>
+          )}
+          {userType === "employee" && (
+            <a href="/employee" className="navbar-a">
+              <Button color="inherit">Home</Button>
+            </a>
+          )}
+          {(user === null || user === undefined) && (
+            <a href="/" className="navbar-a">
+              <Button color="inherit">Sign In</Button>
+            </a>
+          )}
+
           <a href="/signup" className="navbar-a">
             <Button color="inherit">Sign Up</Button>
           </a>
+
+          {user !== null && user !== undefined && (
+            <a href="" className="navbar-a">
+              <Button color="inherit" onClick={logout}>
+                Log Out
+              </Button>
+            </a>
+          )}
         </Toolbar>
       </AppBar>
     </div>

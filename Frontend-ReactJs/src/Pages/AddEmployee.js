@@ -14,6 +14,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
 import ButtonAppBar from "../Components/NavBar";
 import AdminService from "../services/AdminService";
+import EmployeeService from "../services/EmployeeService";
 
 const useStyles = makeStyles((theme) => ({
   paper: {
@@ -35,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SignIn() {
+export default function AddEmployee() {
   const classes = useStyles();
 
   const [state, setState] = useState({});
@@ -56,8 +57,8 @@ export default function SignIn() {
     } else if (state.password !== state.reenterpassword) {
       alert("password does not match");
     } else {
-      AdminService.addAdmin(state).then((response) => {
-        alert("Sucess!! Your Id is " + response.data.adminId);
+      EmployeeService.addEmployee(state).then((response) => {
+        alert("Sucess!! Your Id is " + response.data.empId);
         window.location.replace("/");
       });
     }
@@ -68,11 +69,9 @@ export default function SignIn() {
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <div className={classes.paper}>
-          <Avatar className={classes.avatar}>
-            <LockOutlinedIcon />
-          </Avatar>
+        
           <Typography component="h1" variant="h5">
-            Sign Up
+            Add Employee
           </Typography>
           <form className={classes.form}>
             <TextField
@@ -84,6 +83,18 @@ export default function SignIn() {
               label="Name"
               name="name"
               autoComplete="name"
+              onChange={handleChange}
+              autoFocus
+            />
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              id="area"
+              label="Area"
+              name="area"
+              autoComplete="area"
               onChange={handleChange}
               autoFocus
             />
@@ -120,20 +131,9 @@ export default function SignIn() {
               className={classes.submit}
               onClick={handleSubmit}
             >
-              Sign Up
+              Add
             </Button>
-            <Grid container>
-              <Grid item xs>
-                <Link href="#" variant="body2">
-                  Forgot password?
-                </Link>
-              </Grid>
-              <Grid item>
-                <Link href="/" variant="body2">
-                  {"Have an account? Sign In"}
-                </Link>
-              </Grid>
-            </Grid>
+            
           </form>
         </div>
       </Container>
