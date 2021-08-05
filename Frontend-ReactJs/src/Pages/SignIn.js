@@ -53,7 +53,7 @@ export default function SignIn() {
         var data = response.data;
         if (data !== null && data.password == state.password) {
           // set session
-          localStorage.setItem("user", data.name);
+          localStorage.setItem("user", data.adminId);
           localStorage.setItem("userType", "admin");
           // redirect
           window.location.replace("/admin");
@@ -68,7 +68,7 @@ export default function SignIn() {
         var data = response.data;
         if (data !== null && data.password == state.password) {
           // set session
-          localStorage.setItem("user", data.name);
+          localStorage.setItem("user", data.empId);
           localStorage.setItem("userType", "employee");
           // redirect
           window.location.replace("/employee");

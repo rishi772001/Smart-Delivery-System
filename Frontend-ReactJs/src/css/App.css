@@ -18,6 +18,12 @@
 .cam-container{
   width: 30px;
 }
+.map-container{
+  margin: auto;
+}
+.path-btn{
+  margin-left: 10px;
+}
 /* IMAGE */
 .demo-image-preview {
   position: relative;

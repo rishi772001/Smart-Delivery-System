@@ -45,4 +45,13 @@ public class ParcelController {
     public ResponseEntity<List<ParcelEntity>> getPath(@PathVariable("id") int id){
         return new ResponseEntity<>(parcelService.getPath(id), HttpStatus.ACCEPTED);
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<ParcelEntity> updateStatus(@PathVariable("id") int id){
+        ParcelEntity parcel = parcelService.updateStatus(id);
+        if(parcel != null){
+            return new ResponseEntity<>(parcel, HttpStatus.OK);
+        }
+        return new ResponseEntity<ParcelEntity>(parcel, HttpStatus.BAD_REQUEST);
+    }
 }

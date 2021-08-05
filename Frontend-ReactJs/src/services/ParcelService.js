@@ -1,7 +1,14 @@
 import axios from "axios";
 var PARCEL_API_URL = "http://localhost:8080/parcels/";
 class ParcelService {
+  getPath(empId) {
+    return axios.get(PARCEL_API_URL + "path/" + empId);
+  }
 
+  updateStatus(id){
+    console.log(id)
+    return axios.put(PARCEL_API_URL + id);
+  }
   addParcel(data) {
     var parcel = {
       fromAddress: data.fromAddress,

@@ -68,6 +68,7 @@ public class ParcelService {
 
     private int calculateDistance(String a, String b) {
         return 1;
+        // TODO: calculate distance
     }
 
     public List<ParcelEntity> getPath(int empId) {
@@ -83,6 +84,7 @@ public class ParcelService {
         // Add office location
         ParcelEntity office = new ParcelEntity();
         office.setParcelId(-1);
+        office.setStatus("delivered");
         office.setToAddress("205, Thiruvottiyur High Rd, Rajakadai, Tiruvottiyur, Chennai, Tamil Nadu 600019");
         parcelsToBeDelivered.add(office);
         // Create TSP
@@ -105,5 +107,19 @@ public class ParcelService {
             tspPath.add(parcelsToBeDelivered.get(i));
         }
         return tspPath;
+    }
+
+    public ParcelEntity updateStatus(int id){
+        Optional<ParcelEntity> optParcel = parcelRepository.findById(id);
+        ParcelEntity parcel = null;
+
+        if(optParcel.isPresent()){
+            parcel = optParcel.get();
+        }
+        if(parcel != null){
+            parcel.setStatus("delivered");
+            parcelRepository.save(parcel);
+        }
+        return parcel;
     }
 }
